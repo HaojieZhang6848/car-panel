@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title th:text="'容器' + ${containerName} + '重启结果'"></title>
+</head>
+<body>
+    <h1 th:text="'容器' + ${containerName} + '重启结果'"></h1>
+    <div th:if="${message}">
+        <h1 th:text="${message}"></h1>
+        <div>
+            <a href="/index">返回首页</a>
+        <div>
+    </div>
+    <div th:unless="${message}">
+        <h1>重启成功</h1>
+        <div>
+            <a href="/index">返回首页</a>
+        <div>
+    </div>
+</body>
+</html>

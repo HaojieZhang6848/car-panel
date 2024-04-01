@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title th:text="'容器日志' + ${containerName}"></title>
+</head>
+<body>
+    <div th:if="${logs}">
+        <h1>容器日志</h1>
+        <div th:each="log : ${logs}" th:text="${log}"></pre>
+    </div>
+    <div th:unless="${logs}">
+        <h1>没有日志</h1>
+    </div>
+</body>
+</html>

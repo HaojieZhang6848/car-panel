@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>湾谷小车控制台</title>
+</head>
+<body>
+    <h1>概况</h1>
+    <div>
+        <span th:text="'docker-compose文件位置：' + ${dockerComposeFilePath}" />
+        <a href="/startDockerCompose">启动</a>
+        <a href="/stopDockerCompose">停止</a>
+        <a href="/restartDockerCompose">重启</a>
+    </div>
+    <div>要监视的容器名：</div>
+    <ul>
+        <li th:each="containerName : ${monitoredContainerNames}" th:text="${containerName}"></li>
+    </ul>
+    <h1>容器监视</h1>
+    <ul th:each="entry : ${monitoredContainerStatuses}">
+        <li>
+            <span><strong>容器名</strong></span>
+            <span th:text="${entry.key}" />
+            <span><strong>容器状态</strong></span>
+            <span th:text="${entry.value}" />
+            <a th:href="@{'/containerLogs?containerName=' + ${entry.key}}">查看日志</a>
+            <a th:href="@{'/restartDockerContainer?containerName=' + ${entry.key}}">重启</a>
+        </li>
+    </ul>
+    <h1>实用功能</h1>
+    <h2>amcl初始位置设置</h2>
+    <form action="/setAmclInitialPose" method="post">
+        <label for="x">X:</label><br>
+        <input type="text" id="x" name="x" pattern="^-?[0-9]\d*(\.\d+)?$"><br>
+        <label for="y">Y:</label><br>
+        <input type="text" id="y" name="y" pattern="^-?[0-9]\d*(\.\d+)?$"><br>
+        <label for="theta">Theta:</label><br>
+        <input type="text" id="theta" name="theta" pattern="^-?[0-9]\d*(\.\d+)?$" ><br>
+        <input type="submit" value="提交">
+    </form>
+</body>
+</html>

@@ -1,0 +1,6 @@
+spring:
+  application:
+    name: car-panel
+car-panel:
+  model: ${CAR_MODEL}
+  docker-compose-file-path:
