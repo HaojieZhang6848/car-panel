@@ -30,7 +30,7 @@ public class DockerService {
     private List<String> monitoredContainerNames;
 
     public String startDockerCompose(){
-        var command = "docker-compose -f " + dockerComposeFilePath + " up -d";
+        var command = "docker compose -f " + dockerComposeFilePath + " up -d";
         try {
             var process = Runtime.getRuntime().exec(command);
             process.waitFor();
@@ -48,7 +48,7 @@ public class DockerService {
     }
 
     public String stopDockerCompose(){
-        var command = "docker-compose -f " + dockerComposeFilePath + " down";
+        var command = "docker compose -f " + dockerComposeFilePath + " down";
         try {
             var process = Runtime.getRuntime().exec(command);
             process.waitFor();
@@ -66,7 +66,7 @@ public class DockerService {
     }
 
     public String restartDockerCompose(){
-        var command = "docker-compose -f " + dockerComposeFilePath + " restart";
+        var command = "docker compose -f " + dockerComposeFilePath + " restart";
         try {
             var process = Runtime.getRuntime().exec(command);
             process.waitFor();
