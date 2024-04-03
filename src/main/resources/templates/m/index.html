@@ -38,5 +38,17 @@
         <input type="text" id="theta" name="theta" pattern="^-?[0-9]\d*(\.\d+)?$" ><br>
         <input type="submit" value="提交">
     </form>
+    <h2>导航</h2>
+    <form action="/nav" method="post">
+        <label for="x">X:</label><br>
+        <input type="text" id="x" name="x" pattern="^-?[0-9]\d*(\.\d+)?$"><br>
+        <label for="y">Y:</label><br>
+        <input type="text" id="y" name="y" pattern="^-?[0-9]\d*(\.\d+)?$"><br>
+        <label for="theta">Theta:</label><br>
+        <input type="text" id="theta" name="theta" pattern="^-?[0-9]\d*(\.\d+)?$" ><br>
+        <input type="submit" value="提交">
+    </form>
+    <h2>查看当前小车位置</h2>
+    <a href="/curLoc">查看</a>
 </body>
 </html>

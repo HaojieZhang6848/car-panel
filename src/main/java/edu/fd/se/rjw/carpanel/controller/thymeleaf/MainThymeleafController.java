@@ -12,9 +12,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RequestMethod;
-
-
 
 @Controller
 public class MainThymeleafController {
@@ -107,5 +104,29 @@ public class MainThymeleafController {
         model.addAttribute("message", msg);
         return "m/setAmclInitialPose";
     }
+
+    @RequestMapping("nav")
+    public String nav(@RequestParam(required = true) double x,
+                      @RequestParam(required = true) double y,
+                      @RequestParam(required = true) double theta,
+                      Model model){
+        String msg = robotService.nav(x, y, theta);
+        if(msg.isBlank()){
+            msg = String.format("导航成功，x=%f, y=%f, theta=%f", x, y, theta);
+        }
+        model.addAttribute("message", msg);
+        return "m/nav";
+    }
+
+    @RequestMapping("curLoc")
+    public String curLoc(Model model){
+        var pair = robotService.getCurLoc();
+        var curLoc = pair.getLeft();
+        var error = pair.getRight();
+        var retString = curLoc == null ? error.toString() : curLoc.toString();
+        model.addAttribute("message", retString);
+        return "m/curLoc";
+    }
+    
     
 }

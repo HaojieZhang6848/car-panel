@@ -72,6 +72,12 @@
   "name":"[Z"
 },
 {
+  "name": "com.github.dockerjava.transport.DomainSocket",
+  "allDeclaredFields":true,
+  "allDeclaredMethods":true,
+  "allDeclaredConstructors":true
+},
+{
   "name":"boolean",
   "queryAllDeclaredMethods":true,
   "methods":[{"name":"<init>","parameterTypes":["java.lang.Boolean"] }, {"name":"from","parameterTypes":["java.lang.Boolean"] }, {"name":"of","parameterTypes":["java.lang.Boolean"] }, {"name":"valueOf","parameterTypes":["java.lang.Boolean"] }]
@@ -607,12 +613,13 @@
   "allDeclaredFields":true,
   "queryAllDeclaredMethods":true,
   "queryAllDeclaredConstructors":true,
-  "methods":[{"name":"<init>","parameterTypes":[] }, {"name":"containerLogs","parameterTypes":["java.lang.String","org.springframework.ui.Model"] }, {"name":"index","parameterTypes":["org.springframework.ui.Model"] }, {"name":"restartDockerCompose","parameterTypes":["org.springframework.ui.Model"] }, {"name":"restartDockerContainer","parameterTypes":["java.lang.String","org.springframework.ui.Model"] }, {"name":"setAmclInitialPose","parameterTypes":["double","double","double","org.springframework.ui.Model"] }, {"name":"startDockerCompose","parameterTypes":["org.springframework.ui.Model"] }, {"name":"stopDockerCompose","parameterTypes":["org.springframework.ui.Model"] }]
+  "methods":[{"name":"<init>","parameterTypes":[] }, {"name":"containerLogs","parameterTypes":["java.lang.String","org.springframework.ui.Model"] }, {"name":"curLoc","parameterTypes":["org.springframework.ui.Model"] }, {"name":"index","parameterTypes":["org.springframework.ui.Model"] }, {"name":"nav","parameterTypes":["double","double","double","org.springframework.ui.Model"] }, {"name":"restartDockerCompose","parameterTypes":["org.springframework.ui.Model"] }, {"name":"restartDockerContainer","parameterTypes":["java.lang.String","org.springframework.ui.Model"] }, {"name":"setAmclInitialPose","parameterTypes":["double","double","double","org.springframework.ui.Model"] }, {"name":"startDockerCompose","parameterTypes":["org.springframework.ui.Model"] }, {"name":"stopDockerCompose","parameterTypes":["org.springframework.ui.Model"] }]
 },
 {
   "name":"edu.fd.se.rjw.carpanel.docker.DockerComposeInfoProvider",
   "allDeclaredFields":true,
   "queryAllDeclaredMethods":true,
+  "queryAllDeclaredConstructors":true,
   "methods":[{"name":"<init>","parameterTypes":[] }, {"name":"dockerClient","parameterTypes":[] }, {"name":"dockerComposeFilePath","parameterTypes":[] }, {"name":"monitoredContainerNames","parameterTypes":["java.lang.String"] }, {"name":"setBeanFactory","parameterTypes":["org.springframework.beans.factory.BeanFactory"] }]
 },
 {
@@ -635,7 +642,7 @@
   "name":"edu.fd.se.rjw.carpanel.http.RestTemplateProvider",
   "allDeclaredFields":true,
   "queryAllDeclaredMethods":true,
-  "methods":[{"name":"<init>","parameterTypes":[] }, {"name":"restTemplate","parameterTypes":[] }, {"name":"setBeanFactory","parameterTypes":["org.springframework.beans.factory.BeanFactory"] }]
+    "methods":[{"name":"<init>","parameterTypes":[] }, {"name":"restTemplate","parameterTypes":[] }, {"name":"setBeanFactory","parameterTypes":["org.springframework.beans.factory.BeanFactory"] }]
 },
 {
   "name":"edu.fd.se.rjw.carpanel.http.RestTemplateProvider$$SpringCGLIB$$0",
@@ -657,6 +664,7 @@
   "name":"edu.fd.se.rjw.carpanel.mapping.ObjectMapperProvider",
   "allDeclaredFields":true,
   "queryAllDeclaredMethods":true,
+  "queryAllDeclaredConstructors":true,
   "methods":[{"name":"<init>","parameterTypes":[] }, {"name":"objectMapper","parameterTypes":[] }, {"name":"setBeanFactory","parameterTypes":["org.springframework.beans.factory.BeanFactory"] }]
 },
 {
@@ -692,16 +700,50 @@
 {
   "name":"edu.fd.se.rjw.carpanel.web.bind.AmclInitialPose$In",
   "allDeclaredFields":true,
-  "queryAllDeclaredMethods":true,
-  "queryAllDeclaredConstructors":true,
-  "methods":[{"name":"theta","parameterTypes":[] }, {"name":"x","parameterTypes":[] }, {"name":"y","parameterTypes":[] }]
+  "allDeclaredMethods":true,
+  "allDeclaredConstructors":true
 },
 {
   "name":"edu.fd.se.rjw.carpanel.web.bind.AmclInitialPose$Out",
   "allDeclaredFields":true,
-  "queryAllDeclaredMethods":true,
-  "queryAllDeclaredConstructors":true,
-  "methods":[{"name":"<init>","parameterTypes":["java.lang.String"] }]
+  "allDeclaredMethods":true,
+  "allDeclaredConstructors":true
+},
+{
+  "name":"edu.fd.se.rjw.carpanel.web.bind.AmclInitialPose$Error",
+  "allDeclaredFields":true,
+  "allDeclaredMethods":true,
+  "allDeclaredConstructors":true
+},
+{
+  "name":"edu.fd.se.rjw.carpanel.web.bind.CurLoc$Out",
+  "allDeclaredFields":true,
+  "allDeclaredMethods":true,
+  "allDeclaredConstructors":true
+},
+{
+  "name":"edu.fd.se.rjw.carpanel.web.bind.CurLoc$Error",
+  "allDeclaredFields":true,
+  "allDeclaredMethods":true,
+  "allDeclaredConstructors":true
+},
+{
+  "name":"edu.fd.se.rjw.carpanel.web.bind.Nav$In",
+  "allDeclaredFields":true,
+  "allDeclaredMethods":true,
+  "allDeclaredConstructors":true
+},
+{
+  "name":"edu.fd.se.rjw.carpanel.web.bind.Nav$Out",
+  "allDeclaredFields":true,
+  "allDeclaredMethods":true,
+  "allDeclaredConstructors":true
+},
+{
+  "name":"edu.fd.se.rjw.carpanel.web.bind.Nav$Error",
+  "allDeclaredFields":true,
+  "allDeclaredMethods":true,
+  "allDeclaredConstructors":true
 },
 {
   "name":"freemarker.template.Configuration"
@@ -1190,7 +1232,7 @@
 },
 {
   "name":"org.apache.coyote.AbstractProtocol",
-  "methods":[{"name":"getAddress","parameterTypes":[] }, {"name":"getLocalPort","parameterTypes":[] }, {"name":"getProperty","parameterTypes":["java.lang.String"] }, {"name":"setPort","parameterTypes":["int"] }, {"name":"setProperty","parameterTypes":["java.lang.String","java.lang.String"] }]
+  "methods":[{"name":"getName","parameterTypes":[] }, {"name":"getAddress","parameterTypes":[] }, {"name":"getLocalPort","parameterTypes":[] }, {"name":"getProperty","parameterTypes":["java.lang.String"] }, {"name":"setPort","parameterTypes":["int"] }, {"name":"setProperty","parameterTypes":["java.lang.String","java.lang.String"] }]
 },
 {
   "name":"org.apache.coyote.UpgradeProtocol"
