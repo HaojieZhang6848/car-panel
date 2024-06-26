@@ -127,6 +127,16 @@ public class MainThymeleafController {
         model.addAttribute("message", retString);
         return "m/curLoc";
     }
+
+    @RequestMapping("cancelNav")
+    public String cancelNav(Model model){
+        var pair = robotService.cancelNav();
+        var cancelNav = pair.getLeft();
+        var error = pair.getRight();
+        var retString = cancelNav == null ? error.toString() : cancelNav.toString();
+        model.addAttribute("message", retString);
+        return "m/cancelNav";
+    }
     
     
 }

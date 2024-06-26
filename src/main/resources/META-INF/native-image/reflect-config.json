@@ -746,6 +746,18 @@
   "allDeclaredConstructors":true
 },
 {
+  "name":"edu.fd.se.rjw.carpanel.web.bind.CancelNav$Out",
+  "allDeclaredFields":true,
+  "allDeclaredMethods":true,
+  "allDeclaredConstructors":true
+},
+{
+  "name":"edu.fd.se.rjw.carpanel.web.bind.CancelNav$Error",
+  "allDeclaredFields":true,
+  "allDeclaredMethods":true,
+  "allDeclaredConstructors":true
+},
+{
   "name":"freemarker.template.Configuration"
 },
 {

@@ -10,6 +10,7 @@ import org.springframework.web.client.RestTemplate;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 import edu.fd.se.rjw.carpanel.web.bind.AmclInitialPose;
+import edu.fd.se.rjw.carpanel.web.bind.CancelNav;
 import edu.fd.se.rjw.carpanel.web.bind.CurLoc;
 import edu.fd.se.rjw.carpanel.web.bind.Nav;
 
@@ -86,6 +87,28 @@ public class RobotService {
         } catch (Exception e) {
             ret = Pair.of(null, new CurLoc.Error("getCurLoc", "GET", e.getMessage(), 0, 500));
         }
+        return ret;
+    }
+
+    public Pair<CancelNav.Out, CancelNav.Error> cancelNav() {
+        var url = "http://localhost:5000/cancel_nav";
+        Pair<CancelNav.Out, CancelNav.Error> ret;
+
+        try {
+            var res = restTemplate.postForObject(url, null, CancelNav.Out.class);
+            ret = Pair.of(res, null);
+        } catch (HttpClientErrorException | HttpServerErrorException ex) {
+            var rspBodyStr = ex.getResponseBodyAsString();
+            try {
+                var rsp = objectMapper.readValue(rspBodyStr, CancelNav.Error.class);
+                ret = Pair.of(null, rsp);
+            } catch (Exception e) {
+                ret = Pair.of(null, new CancelNav.Error("cancelNav", "GET", e.getMessage(), 0, 500));
+            }
+        } catch (Exception e) {
+            ret = Pair.of(null, new CancelNav.Error("cancelNav", "GET", e.getMessage(), 0, 500));
+        }
+
         return ret;
     }
 }
