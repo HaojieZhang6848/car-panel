@@ -137,6 +137,14 @@ public class MainThymeleafController {
         model.addAttribute("message", retString);
         return "m/cancelNav";
     }
+
+    @RequestMapping("testNav")
+    public String testNav(Model model){
+        var pair = robotService.testNav();
+        var retString = pair.getLeft() == null ? pair.getRight().toString() : pair.getLeft().toString();
+        model.addAttribute("message", retString);
+        return "m/testNav";
+    }
     
     
 }

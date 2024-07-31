@@ -13,6 +13,7 @@ import edu.fd.se.rjw.carpanel.web.bind.AmclInitialPose;
 import edu.fd.se.rjw.carpanel.web.bind.CancelNav;
 import edu.fd.se.rjw.carpanel.web.bind.CurLoc;
 import edu.fd.se.rjw.carpanel.web.bind.Nav;
+import edu.fd.se.rjw.carpanel.web.bind.TestNav;
 
 /**
  * RobotService
@@ -107,6 +108,28 @@ public class RobotService {
             }
         } catch (Exception e) {
             ret = Pair.of(null, new CancelNav.Error("cancelNav", "GET", e.getMessage(), 0, 500));
+        }
+
+        return ret;
+    }
+
+    public Pair<TestNav.Out, TestNav.Error> testNav() {
+        var url = "http://localhost:5000/nav_test";
+        Pair<TestNav.Out, TestNav.Error> ret;
+
+        try {
+            var res = restTemplate.postForObject(url, null, TestNav.Out.class);
+            ret = Pair.of(res, null);
+        } catch (HttpClientErrorException | HttpServerErrorException ex) {
+            var rspBodyStr = ex.getResponseBodyAsString();
+            try {
+                var rsp = objectMapper.readValue(rspBodyStr, TestNav.Error.class);
+                ret = Pair.of(null, rsp);
+            } catch (Exception e) {
+                ret = Pair.of(null, new TestNav.Error("testNav", "GET", e.getMessage(), 0, 500));
+            }
+        } catch (Exception e) {
+            ret = Pair.of(null, new TestNav.Error("testNav", "GET", e.getMessage(), 0, 500));
         }
 
         return ret;
